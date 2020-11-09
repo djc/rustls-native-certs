@@ -34,7 +34,7 @@ pub fn load_native_certs() -> PartialResult<RootCertStore, Error> {
     let mut store = RootCertStore::empty();
     let mut first_error = None;
 
-    if let Some(file) = likely_locations.cert_file {
+    if let Some(file) = dbg!(likely_locations.cert_file) {
         match load_file(&mut store, &file) {
             Err(err) => {
                 first_error = first_error.or_else(|| Some(err));
